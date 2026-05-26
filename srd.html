@@ -36,42 +36,68 @@
                     outlines the problem domain, system functionality, data
                     requirements, constraints, and future system evolution.
                 </p>
+
+                <h3>Version History</h3>
+
+                <table>
+                    <tr>
+                        <th>Version</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                    </tr>
+
+                    <tr>
+                        <td>v1.0</td>
+                        <td>27/06/2026</td>
+                        <td>Initial draft</td>
+                    </tr>
+
+                    <tr>
+                        <td>v1.1</td>
+                        <td>Future Update</td>
+                        <td>Updated requirements</td>
+                    </tr>
+                </table>
             </section>
 
             <section>
                 <h2>2. Introduction</h2>
 
                 <p>
-                    Rapid urbanization has created environments where heat
-                    becomes trapped within dense infrastructure, creating Urban
-                    Heat Islands (UHIs). Materials such as asphalt and concrete
-                    absorb and retain thermal energy, causing urban temperatures
-                    to become significantly higher than surrounding rural
-                    regions.
+                    The increase in urban environments has created thermal zones
+                    which continuously trap heat during the day. This problem
+                    can be attributed to low albedo materials and the geometric
+                    arrangements urban infrastructures take, creating Urban Heat
+                    Islands (UHIs) and the corresponding electrical demand for
+                    additional cooling.
                 </p>
 
                 <p>
-                    Rising urban temperatures increase the use of air
-                    conditioning systems, which consume electrical energy and
-                    release additional heat into the environment. This creates a
-                    feedback loop that intensifies both thermal discomfort and
-                    electrical demand.
+                    Currently, urban centers are experiencing temperature
+                    differences of up to 7 degrees Celsius compared to
+                    surrounding rural areas. This creates a feedback loop where
+                    rising air temperatures increase the demand for electrical
+                    air conditioning, which in turn releases more heat into the
+                    streets and further intensifies urban warming.
                 </p>
 
                 <p>
-                    Urban green spaces such as parks, urban forests, and green
-                    roofs are proven to mitigate UHI effects through shading and
-                    evapotranspiration. However, their effectiveness depends
-                    heavily on their spatial placement and surrounding urban
-                    conditions.
+                    While urban green spaces such as parks and green roofs are
+                    proven to mitigate UHI effects through shade and
+                    evapotranspiration, their efficiency is limited by competing
+                    land usage, sub-optimal placement that fails to target
+                    thermal hotspots, and resource constraints such as
+                    maintenance requirements and budget limitations.
                 </p>
 
                 <p>
-                    This project aims to optimize green space placement through
-                    constraint-based optimization methods. The system maps
-                    thermal hotspots, models constraints such as land
-                    availability and budget, and predicts reductions in
-                    temperature and electrical consumption.
+                    The primary goal of this project is to maximize thermal
+                    energy reduction through optimized green space development.
+                    The system maps Urban Heat Islands, models the constraint
+                    satisfaction problem (CSP) under real-world constraints,
+                    optimizes for maximum reduction of electrical demand, and
+                    quantifies the estimated electrical energy savings per
+                    household and per region.
                 </p>
             </section>
 
@@ -87,14 +113,14 @@
                     <tr>
                         <td>UHI</td>
                         <td>
-                            Urban Heat Island – areas with higher temperatures
-                            than surrounding regions
+                            Urban Heat Island - areas with higher temperatures
+                            than surroundings
                         </td>
                     </tr>
 
                     <tr>
                         <td>CSP</td>
-                        <td>Constraint Satisfaction Problem</td>
+                        <td>Cloud Service Provider</td>
                     </tr>
 
                     <tr>
@@ -105,6 +131,48 @@
                     <tr>
                         <td>GIS</td>
                         <td>Geographic Information System</td>
+                    </tr>
+
+                    <tr>
+                        <td>MCDA</td>
+                        <td>
+                            Multi-Criteria Decision Analysis framework - used to
+                            evaluate and rank placement options.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>LST</td>
+                        <td>
+                            Land Surface Temperature - Surface temperature
+                            measured using satellite thermal imagery
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Street Canyon</td>
+                        <td>
+                            Urban street environment that traps heat and affects
+                            airflow.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>BCR</td>
+                        <td>Building Coverage Ratio</td>
+                    </tr>
+
+                    <tr>
+                        <td>FAR</td>
+                        <td>Floor Area Ratio</td>
+                    </tr>
+
+                    <tr>
+                        <td>Landsat 8/9</td>
+                        <td>
+                            Satellites providing thermal imagery for
+                            environmental analysis.
+                        </td>
                     </tr>
                 </table>
             </section>
@@ -287,7 +355,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-19</td>
+                        <td>FR-15</td>
                         <td>
                             The system shall allow users to define custom
                             constraints of spatial, linear, and boolean types
@@ -296,7 +364,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-20</td>
+                        <td>FR-16</td>
                         <td>
                             The system shall save user-defined constraints and
                             allow them to be reloaded and modified for future
@@ -305,7 +373,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-21</td>
+                        <td>FR-17</td>
                         <td>
                             The system shall allow users to define separate
                             budget constraints for immediate installation cost
@@ -314,7 +382,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-22</td>
+                        <td>FR-18</td>
                         <td>
                             The system shall allow users to set a maintenance
                             labor capacity limit that restricts the total
@@ -323,7 +391,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-23</td>
+                        <td>FR-19</td>
                         <td>
                             The system shall allow users to specify funding
                             source restrictions that limit which placement
@@ -332,7 +400,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-24</td>
+                        <td>FR-20</td>
                         <td>
                             The system shall allow users to define minimum patch
                             size thresholds, below which candidate areas are
@@ -341,7 +409,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-25</td>
+                        <td>FR-21</td>
                         <td>
                             The system shall allow users to toggle between a
                             public-land-only placement mode and a mode that
@@ -350,7 +418,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-26</td>
+                        <td>FR-22</td>
                         <td>
                             The system shall allow users to define minimum
                             distance buffers from underground utility
@@ -360,7 +428,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-27</td>
+                        <td>FR-23</td>
                         <td>
                             The system shall incorporate right-of-way width data
                             as a spatial constraint that excludes legally
@@ -369,7 +437,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-28</td>
+                        <td>FR-24</td>
                         <td>
                             The system shall allow users to define sightline and
                             visibility clearance thresholds that restrict
@@ -379,7 +447,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-29</td>
+                        <td>FR-25</td>
                         <td>
                             The system shall flag historic and cultural sites as
                             protected zones where placement is restricted or
@@ -388,7 +456,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-30</td>
+                        <td>FR-26</td>
                         <td>
                             The system shall account for solar enclosure
                             restrictions, ensuring proposed placements do not
@@ -398,7 +466,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-32</td>
+                        <td>FR-27</td>
                         <td>
                             The system shall identify street canyon
                             configurations as high-priority intervention zones
@@ -416,7 +484,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-33</td>
+                        <td>FR-28</td>
                         <td>
                             The system shall implement a weighted multi-criteria
                             decision analysis (MCDA) framework to evaluate and
@@ -426,7 +494,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-34</td>
+                        <td>FR-29</td>
                         <td>
                             The system shall use land surface temperature
                             reduction as the primary optimization objective.
@@ -434,7 +502,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-35</td>
+                        <td>FR-30</td>
                         <td>
                             The system shall incorporate park provision rate as
                             a measurable criterion in the MCDA scoring of
@@ -443,7 +511,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-36</td>
+                        <td>FR-31</td>
                         <td>
                             The system shall incorporate equity of access as a
                             weighted criterion, ensuring underserved or
@@ -453,7 +521,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-37</td>
+                        <td>FR-32</td>
                         <td>
                             The system shall allow users to input district
                             equity parameters to guide balanced spatial
@@ -463,7 +531,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-38</td>
+                        <td>FR-33</td>
                         <td>
                             The system shall incorporate disaster prevention as
                             a constraint category, flagging placements that may
@@ -473,7 +541,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-41</td>
+                        <td>FR-34</td>
                         <td>
                             The system shall be capable of simultaneously
                             incorporating multiple constraint types (hard,
@@ -492,7 +560,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-42</td>
+                        <td>FR-35</td>
                         <td>
                             The system shall allow users to define named
                             planning scenarios by adjusting parameters including
@@ -502,7 +570,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-43</td>
+                        <td>FR-36</td>
                         <td>
                             The system shall generate a distinct green space
                             placement recommendation for each planning scenario
@@ -511,7 +579,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-44</td>
+                        <td>FR-37</td>
                         <td>
                             The system shall allow users to compare the outputs
                             of multiple planning scenarios within the same
@@ -529,7 +597,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-45</td>
+                        <td>FR-38</td>
                         <td>
                             The system shall generate a predicted
                             post-intervention land surface temperature map that
@@ -540,7 +608,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-46</td>
+                        <td>FR-39</td>
                         <td>
                             The system shall display the predicted "After" heat
                             map alongside the original "Before" map to enable
@@ -549,7 +617,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-47</td>
+                        <td>FR-40</td>
                         <td>
                             The system shall display temperature legends and
                             distance scales on all generated heat maps.
@@ -557,7 +625,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-48</td>
+                        <td>FR-41</td>
                         <td>
                             The system shall display a quantitative summary of
                             predicted land surface temperature improvement upon
@@ -566,7 +634,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-49</td>
+                        <td>FR-42</td>
                         <td>
                             The system shall report estimated energy savings as
                             a secondary metric, clearly labelled as an
@@ -576,7 +644,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-50</td>
+                        <td>FR-43</td>
                         <td>
                             The system shall provide a placement rationale for
                             each suggested green space location, indicating the
@@ -585,7 +653,7 @@
                     </tr>
 
                     <tr>
-                        <td>FR-51</td>
+                        <td>FR-44</td>
                         <td>
                             The system shall display relevant improvement
                             indices (e.g. estimated temperature reduction,
@@ -760,7 +828,7 @@
                     </tr>
 
                     <tr>
-                        <td>NFR-13</td>
+                        <td>NFR-12</td>
                         <td>
                             The system shall allow additional constraint types
                             and environmental metrics to be added without
@@ -779,7 +847,7 @@
                     </tr>
 
                     <tr>
-                        <td>NFR-14</td>
+                        <td>NFR-13</td>
                         <td>
                             The system shall log all optimization runs,
                             including input parameters, active constraints, and
@@ -789,7 +857,7 @@
                     </tr>
 
                     <tr>
-                        <td>NFR-15</td>
+                        <td>NFR-14</td>
                         <td>
                             The system shall clearly distinguish between hard
                             constraints (non-negotiable exclusions) and
@@ -831,7 +899,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-04</td>
+                        <td>DR-03</td>
                         <td>
                             The system shall support city-specific mandatory
                             green space ratios and minimum open space
@@ -850,7 +918,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-05</td>
+                        <td>DR-04</td>
                         <td>
                             The system shall restrict green space placement in
                             areas where underground utilities (water pipes, gas
@@ -860,7 +928,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-06</td>
+                        <td>DR-05</td>
                         <td>
                             The system shall restrict placement in areas where
                             above-ground structures (power lines, streetlights,
@@ -870,7 +938,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-07</td>
+                        <td>DR-06</td>
                         <td>
                             The system shall account for road access
                             requirements and street layout geometries when
@@ -889,7 +957,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-09</td>
+                        <td>DR-07</td>
                         <td>
                             The system shall account for soil quality, drainage
                             capacity, and groundwater conditions as site
@@ -898,7 +966,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-10</td>
+                        <td>DR-08</td>
                         <td>
                             The system shall restrict species-sensitive or
                             ecologically protected areas (e.g. conservation
@@ -908,7 +976,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-12</td>
+                        <td>DR-09</td>
                         <td>
                             The system shall incorporate waste heat capture
                             potential as a secondary environmental benefit
@@ -927,7 +995,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-13</td>
+                        <td>DR-10</td>
                         <td>
                             The system shall consider stormwater management
                             capacity (infiltration, retention, and flood
@@ -938,7 +1006,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-14</td>
+                        <td>DR-11</td>
                         <td>
                             The system shall account for urban drainage and
                             flood prevention regulations when evaluating
@@ -957,7 +1025,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-15</td>
+                        <td>DR-12</td>
                         <td>
                             The system shall apply preservation-priority
                             overrides in culturally or historically protected
@@ -967,7 +1035,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-16</td>
+                        <td>DR-13</td>
                         <td>
                             The system shall flag areas subject to heritage
                             restrictions with explicit warnings and shall not
@@ -986,7 +1054,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-17</td>
+                        <td>DR-14</td>
                         <td>
                             The system shall ensure that no proposed green space
                             arrangement obstructs designated evacuation routes
@@ -996,7 +1064,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-18</td>
+                        <td>DR-15</td>
                         <td>
                             The system shall account for fire risk factors,
                             ensuring that proposed vegetation density in
@@ -1015,7 +1083,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-19</td>
+                        <td>DR-16</td>
                         <td>
                             The system shall evaluate the long-term operational
                             feasibility of proposed arrangements by
@@ -1026,7 +1094,7 @@
                     </tr>
 
                     <tr>
-                        <td>DR-20</td>
+                        <td>DR-17</td>
                         <td>
                             The system shall ensure that all recommended green
                             space arrangements are practically sustainable given
@@ -1039,43 +1107,56 @@
             </section>
 
             <section>
-                <h2>5. System Models</h2>
-
-                <p>
-                    The system model represents the flow of data from external
-                    datasets through processing and optimization modules,
-                    resulting in visual outputs and recommendations for urban
-                    planners.
-                </p>
-
-                <h3>Possible Models</h3>
-
-                <ul>
-                    <li>Data Flow Diagram</li>
-                    <li>Input → Processing → Output Model</li>
-                    <li>Spatial GIS-Based Optimization Model</li>
-                </ul>
-            </section>
-
-            <section>
                 <h2>6. System Evolution</h2>
 
                 <h3>6.1 Scope Evolution</h3>
 
                 <p>
-                    Future versions of the system may consider macro-scale
-                    environmental effects such as regional wind patterns and
-                    urban airflow changes caused by large-scale infrastructure
-                    arrangements.
+                    Since the current system cannot accurately predict
+                    macro-scale environmental changes such as blocking or
+                    redirecting large-scale hot air flow using vegetation,
+                    future system evolution may extend the scope to include
+                    macro-scale urban climate modelling.
+                </p>
+
+                <p>
+                    Future versions of the system may evaluate how large-scale
+                    urban configurations influence airflow and temperature
+                    distribution, including factors such as wind tunnel
+                    corridors, aerodynamic drag characteristics, Sky View
+                    Factor, Bowen Ratio, Frontal Area Index, pollution
+                    deposition velocity, and advanced airflow and heat modelling
+                    integrations.
+                </p>
+
+                <p>
+                    The system may also extend support for additional green
+                    space typologies such as green roofs, vertical forests, and
+                    vertical greenery systems. Future improvements may include
+                    modelling the differences in cooling efficiency, maintenance
+                    cost, irrigation demand, and water use efficiency between
+                    various green space typologies.
                 </p>
 
                 <h3>6.2 Data Processing Evolution</h3>
 
                 <p>
-                    Future development may improve the separation of
-                    meteorological effects from urban infrastructure influences,
-                    including highways, skyscrapers, and artificial airflow
-                    channels.
+                    Current datasets are heavily affected by complex
+                    interactions between urban infrastructure and meteorological
+                    developments that are difficult to separate accurately. For
+                    example, highways may create wind tunnel effects while
+                    skyscrapers may block or redirect natural airflow patterns.
+                </p>
+
+                <p>
+                    Future system evolution may improve data processing methods
+                    to better distinguish the effects of urban infrastructure
+                    and environmental conditions. This may include integrating
+                    additional factors such as sunlight availability, shading
+                    patterns, solar radiation exposure, prevailing wind
+                    patterns, urban microclimate characteristics, and the
+                    influence of proposed green space typologies on local
+                    airflow within dense urban street configurations.
                 </p>
             </section>
 

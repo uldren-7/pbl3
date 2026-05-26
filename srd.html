@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Software Requirements Document</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <header>
+            <h1>Software Requirements Document</h1>
+            <p>Green Space Optimization for UHI Reduction</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="problem.html">Problem</a>
+            <a href="approach.html">Approach</a>
+            <a href="data.html">Data</a>
+            <a href="results.html">Results</a>
+            <a href="about.html">About</a>
+            <a href="srd.html">SRD</a>
+        </nav>
+
+        <div class="container">
+            <section>
+                <h2>1. Preface</h2>
+
+                <p>
+                    This page describes the requirements and system design for a
+                    decision-support system aimed at optimizing urban green
+                    space placement to reduce Urban Heat Island (UHI) effects
+                    and electrical consumption. The document is intended for
+                    academic evaluation and project development purposes. It
+                    outlines the problem domain, system functionality, data
+                    requirements, constraints, and future system evolution.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. Introduction</h2>
+
+                <p>
+                    Rapid urbanization has created environments where heat
+                    becomes trapped within dense infrastructure, creating Urban
+                    Heat Islands (UHIs). Materials such as asphalt and concrete
+                    absorb and retain thermal energy, causing urban temperatures
+                    to become significantly higher than surrounding rural
+                    regions.
+                </p>
+
+                <p>
+                    Rising urban temperatures increase the use of air
+                    conditioning systems, which consume electrical energy and
+                    release additional heat into the environment. This creates a
+                    feedback loop that intensifies both thermal discomfort and
+                    electrical demand.
+                </p>
+
+                <p>
+                    Urban green spaces such as parks, urban forests, and green
+                    roofs are proven to mitigate UHI effects through shading and
+                    evapotranspiration. However, their effectiveness depends
+                    heavily on their spatial placement and surrounding urban
+                    conditions.
+                </p>
+
+                <p>
+                    This project aims to optimize green space placement through
+                    constraint-based optimization methods. The system maps
+                    thermal hotspots, models constraints such as land
+                    availability and budget, and predicts reductions in
+                    temperature and electrical consumption.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. Glossary</h2>
+
+                <table>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+
+                    <tr>
+                        <td>UHI</td>
+                        <td>
+                            Urban Heat Island – areas with higher temperatures
+                            than surrounding regions
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>CSP</td>
+                        <td>Constraint Satisfaction Problem</td>
+                    </tr>
+
+                    <tr>
+                        <td>UNDP</td>
+                        <td>United Nations Development Programme</td>
+                    </tr>
+
+                    <tr>
+                        <td>GIS</td>
+                        <td>Geographic Information System</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>4. User Requirements Definition</h2>
+
+                <h3>Overview</h3>
+
+                <p>
+                    The system provides mapping and identification of Urban Heat
+                    Islands and models how green developments affect urban
+                    temperature distribution. It creates a spatial and temporal
+                    simulation where green development locations are subjected
+                    to constraints such as land availability and budget.
+                </p>
+
+                <p>
+                    The system optimizes green space placement to reduce thermal
+                    energy and electrical demand while estimating energy savings
+                    per household and region.
+                </p>
+
+                <h2>Functional Requirements</h2>
+                <h3>A. Data Input & Processing</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>FR-01</td>
+                        <td>
+                            The system shall automatically ingest satellite
+                            imagery (including Landsat 8/9 thermal infrared
+                            bands) to generate an initial grid representation of
+                            the urban area.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-02</td>
+                        <td>
+                            The system shall automatically read and process
+                            urban heat data, building footprint data, and water
+                            network data without requiring manual file
+                            conversion by the user.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-03</td>
+                        <td>
+                            The system shall treat water network availability as
+                            a hard constraint, automatically excluding grid
+                            cells where water access is insufficient to support
+                            vegetation.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-04</td>
+                        <td>
+                            The system shall accept population density data as a
+                            weighted input that influences the priority scoring
+                            of candidate green space locations.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-05</td>
+                        <td>
+                            The system shall accept population vulnerability
+                            indices as a weighted criterion within the placement
+                            evaluation framework.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-06</td>
+                        <td>
+                            The system shall be able to ingest publicly
+                            available civic data (e.g. 311 service request data)
+                            as a proxy indicator for community need and
+                            underservice.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-07</td>
+                        <td>
+                            The system shall accept parcel valuation and land
+                            domain data to inform land acquisition feasibility
+                            assessments.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-08</td>
+                        <td>
+                            The system shall allow users to align placement
+                            recommendations with existing capital improvement
+                            plans by accepting relevant project data as input.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-09</td>
+                        <td>
+                            The system shall support a clearly defined input
+                            file format and shall provide documentation or
+                            tooling to assist users in preparing data in that
+                            format.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>B. Grid UI & Manual Control</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>FR-10</td>
+                        <td>
+                            The system shall provide a grid-based user interface
+                            that displays the urban area overlaid with the
+                            generated green space arrangement.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-11</td>
+                        <td>
+                            The system shall allow users to manually rearrange
+                            green spaces within the grid after automatic
+                            generation.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-12</td>
+                        <td>
+                            The system shall update heat impact visualizations
+                            in real time whenever the user manually modifies the
+                            arrangement.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-13</td>
+                        <td>
+                            The system shall allow users to designate specific
+                            grid cells as static (immovable), which the
+                            optimization model shall treat as hard constraints.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-14</td>
+                        <td>
+                            The system shall display satellite imagery as the
+                            base layer of the grid interface to provide spatial
+                            context for manual editing.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>C. Constraint System</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>FR-19</td>
+                        <td>
+                            The system shall allow users to define custom
+                            constraints of spatial, linear, and boolean types
+                            that are incorporated into the optimization model.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-20</td>
+                        <td>
+                            The system shall save user-defined constraints and
+                            allow them to be reloaded and modified for future
+                            projects.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-21</td>
+                        <td>
+                            The system shall allow users to define separate
+                            budget constraints for immediate installation cost
+                            and long-term maintenance cost.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-22</td>
+                        <td>
+                            The system shall allow users to set a maintenance
+                            labor capacity limit that restricts the total
+                            manageable green space area.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-23</td>
+                        <td>
+                            The system shall allow users to specify funding
+                            source restrictions that limit which placement
+                            options are eligible under a given budget.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-24</td>
+                        <td>
+                            The system shall allow users to define minimum patch
+                            size thresholds, below which candidate areas are
+                            excluded from consideration.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-25</td>
+                        <td>
+                            The system shall allow users to toggle between a
+                            public-land-only placement mode and a mode that
+                            includes potentially acquirable private land.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-26</td>
+                        <td>
+                            The system shall allow users to define minimum
+                            distance buffers from underground utility
+                            infrastructure, including deep foundations, subway
+                            lines, and water mains.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-27</td>
+                        <td>
+                            The system shall incorporate right-of-way width data
+                            as a spatial constraint that excludes legally
+                            restricted corridors from placement.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-28</td>
+                        <td>
+                            The system shall allow users to define sightline and
+                            visibility clearance thresholds that restrict
+                            placement in areas requiring unobstructed lines of
+                            sight.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-29</td>
+                        <td>
+                            The system shall flag historic and cultural sites as
+                            protected zones where placement is restricted or
+                            requires explicit user override.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-30</td>
+                        <td>
+                            The system shall account for solar enclosure
+                            restrictions, ensuring proposed placements do not
+                            violate solar access regulations for adjacent
+                            structures.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-32</td>
+                        <td>
+                            The system shall identify street canyon
+                            configurations as high-priority intervention zones
+                            within the candidate scoring framework.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>D. Optimization Model</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>FR-33</td>
+                        <td>
+                            The system shall implement a weighted multi-criteria
+                            decision analysis (MCDA) framework to evaluate and
+                            rank candidate green space locations across all
+                            active constraints and objectives.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-34</td>
+                        <td>
+                            The system shall use land surface temperature
+                            reduction as the primary optimization objective.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-35</td>
+                        <td>
+                            The system shall incorporate park provision rate as
+                            a measurable criterion in the MCDA scoring of
+                            candidate locations.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-36</td>
+                        <td>
+                            The system shall incorporate equity of access as a
+                            weighted criterion, ensuring underserved or
+                            low-income districts are not systematically
+                            deprioritized.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-37</td>
+                        <td>
+                            The system shall allow users to input district
+                            equity parameters to guide balanced spatial
+                            distribution of green space across administrative
+                            areas.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-38</td>
+                        <td>
+                            The system shall incorporate disaster prevention as
+                            a constraint category, flagging placements that may
+                            obstruct emergency access routes or evacuation
+                            corridors.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-41</td>
+                        <td>
+                            The system shall be capable of simultaneously
+                            incorporating multiple constraint types (hard,
+                            weighted, spatial, regulatory) within a single
+                            optimization run.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>E. Planning Scenarios</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>FR-42</td>
+                        <td>
+                            The system shall allow users to define named
+                            planning scenarios by adjusting parameters including
+                            available budget, available land area, and
+                            constraint weights.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-43</td>
+                        <td>
+                            The system shall generate a distinct green space
+                            placement recommendation for each planning scenario
+                            defined by the user.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-44</td>
+                        <td>
+                            The system shall allow users to compare the outputs
+                            of multiple planning scenarios within the same
+                            session.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>F. Output & Reporting</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>FR-45</td>
+                        <td>
+                            The system shall generate a predicted
+                            post-intervention land surface temperature map that
+                            visually represents estimated temperature
+                            distribution after the proposed arrangement is
+                            applied.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-46</td>
+                        <td>
+                            The system shall display the predicted "After" heat
+                            map alongside the original "Before" map to enable
+                            direct visual comparison.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-47</td>
+                        <td>
+                            The system shall display temperature legends and
+                            distance scales on all generated heat maps.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-48</td>
+                        <td>
+                            The system shall display a quantitative summary of
+                            predicted land surface temperature improvement upon
+                            completion of each optimization run.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-49</td>
+                        <td>
+                            The system shall report estimated energy savings as
+                            a secondary metric, clearly labelled as an
+                            approximation derived from temperature reduction
+                            values.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-50</td>
+                        <td>
+                            The system shall provide a placement rationale for
+                            each suggested green space location, indicating the
+                            primary factors driving its selection.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FR-51</td>
+                        <td>
+                            The system shall display relevant improvement
+                            indices (e.g. estimated temperature reduction,
+                            carbon emission reduction proxy) to support
+                            reporting and decision-making by city planners.
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Non-Functional Requirements</h2>
+
+                <h3>A. Performance</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-01</td>
+                        <td>
+                            The system shall be designed to support computation
+                            runs of up to multiple days in duration without
+                            failure or data loss, prioritizing result accuracy
+                            over speed.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-02</td>
+                        <td>
+                            The system shall update heat impact visualizations
+                            within 3 seconds of any manual modification to the
+                            grid arrangement during interactive editing
+                            sessions.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-03</td>
+                        <td>
+                            The system shall remain responsive for user input
+                            during long optimization runs, providing progress
+                            feedback at regular intervals.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>B. Usability</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-04</td>
+                        <td>
+                            The system shall provide a user interface operable
+                            by city planners with moderate technical knowledge,
+                            without requiring programming or GIS expertise for
+                            standard workflows.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-05</td>
+                        <td>
+                            The system shall provide inline documentation or
+                            tooltips explaining each constraint parameter,
+                            metric, and input field to support non-specialist
+                            users.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-06</td>
+                        <td>
+                            The system shall display clear warnings when a
+                            user-defined constraint combination results in no
+                            feasible placement options.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>C. Reliability &amp; Data Integrity</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-07</td>
+                        <td>
+                            The system shall preserve all user-defined
+                            constraints, scenario configurations, and session
+                            data across application restarts without data loss.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-08</td>
+                        <td>
+                            The system shall validate all imported data files
+                            for format correctness and completeness before
+                            initiating an optimization run, and shall report
+                            specific errors to the user.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>D. Generalizability &amp; Portability</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-09</td>
+                        <td>
+                            The system shall function across different cities by
+                            accepting city-specific datasets, constraints, and
+                            configurations as inputs, without requiring
+                            code-level modification.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-10</td>
+                        <td>
+                            The system shall not be restricted to a single
+                            pre-trained geographic model; it shall produce valid
+                            results for any city for which the required input
+                            data and constraints are provided.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>E. Scalability</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-11</td>
+                        <td>
+                            The system shall support urban area inputs of
+                            varying resolution and spatial extent without
+                            requiring reconfiguration of the core optimization
+                            model.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>F. Extensibility</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-13</td>
+                        <td>
+                            The system shall allow additional constraint types
+                            and environmental metrics to be added without
+                            requiring changes to the core optimization
+                            framework.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>G. Transparency &amp; Auditability</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-14</td>
+                        <td>
+                            The system shall log all optimization runs,
+                            including input parameters, active constraints, and
+                            output metrics, to support auditability and
+                            reproducibility.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NFR-15</td>
+                        <td>
+                            The system shall clearly distinguish between hard
+                            constraints (non-negotiable exclusions) and
+                            soft/weighted constraints (preference-based scoring)
+                            in all output displays and reports.
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h2>Domain Requirements</h2>
+
+                <h3>A. Regulatory &amp; Zoning</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-01</td>
+                        <td>
+                            The system shall treat land-use zoning
+                            classifications (residential, commercial,
+                            industrial) as constraint boundaries that define
+                            permissible placement areas for each green space.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-02</td>
+                        <td>
+                            The system shall incorporate building coverage ratio
+                            and floor area ratio regulations as spatial
+                            constraints that limit the proportion of land
+                            available for green space development.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-04</td>
+                        <td>
+                            The system shall support city-specific mandatory
+                            green space ratios and minimum open space
+                            requirements as hard constraints in the optimization
+                            model.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>B. Infrastructure</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-05</td>
+                        <td>
+                            The system shall restrict green space placement in
+                            areas where underground utilities (water pipes, gas
+                            lines, electrical cables) would conflict with root
+                            growth or excavation requirements.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-06</td>
+                        <td>
+                            The system shall restrict placement in areas where
+                            above-ground structures (power lines, streetlights,
+                            traffic signals) impose height or spatial conflicts
+                            with proposed typologies.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-07</td>
+                        <td>
+                            The system shall account for road access
+                            requirements and street layout geometries when
+                            evaluating roadside or street-level green space
+                            placements.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>C. Environmental &amp; Ecological</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-09</td>
+                        <td>
+                            The system shall account for soil quality, drainage
+                            capacity, and groundwater conditions as site
+                            suitability factors in the placement evaluation.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-10</td>
+                        <td>
+                            The system shall restrict species-sensitive or
+                            ecologically protected areas (e.g. conservation
+                            zones, biodiversity protection areas) from standard
+                            optimization placement unless explicitly overridden.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-12</td>
+                        <td>
+                            The system shall incorporate waste heat capture
+                            potential as a secondary environmental benefit
+                            metric available for inclusion in the optimization
+                            output.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>D. Water &amp; Stormwater</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-13</td>
+                        <td>
+                            The system shall consider stormwater management
+                            capacity (infiltration, retention, and flood
+                            reduction) as an additional benefit metric when
+                            evaluating green space placements in low-lying or
+                            high-runoff areas.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-14</td>
+                        <td>
+                            The system shall account for urban drainage and
+                            flood prevention regulations when evaluating
+                            placement in areas with known runoff pathways or
+                            flood risk.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>E. Cultural &amp; Heritage</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-15</td>
+                        <td>
+                            The system shall apply preservation-priority
+                            overrides in culturally or historically protected
+                            areas, where heritage regulations may restrict or
+                            override optimization objectives.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-16</td>
+                        <td>
+                            The system shall flag areas subject to heritage
+                            restrictions with explicit warnings and shall not
+                            place green spaces there by default without user
+                            confirmation.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>F. Safety</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-17</td>
+                        <td>
+                            The system shall ensure that no proposed green space
+                            arrangement obstructs designated evacuation routes
+                            or emergency access corridors, treating these as
+                            non-negotiable exclusion zones.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-18</td>
+                        <td>
+                            The system shall account for fire risk factors,
+                            ensuring that proposed vegetation density in
+                            fire-prone configurations does not exceed safety
+                            thresholds defined by the user or regulatory input.
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>G. Maintenance &amp; Operational Feasibility</h3>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Requirement</th>
+                    </tr>
+
+                    <tr>
+                        <td>DR-19</td>
+                        <td>
+                            The system shall evaluate the long-term operational
+                            feasibility of proposed arrangements by
+                            incorporating maintenance cost, irrigation demand,
+                            and management complexity as planning criteria
+                            alongside optimization objectives.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>DR-20</td>
+                        <td>
+                            The system shall ensure that all recommended green
+                            space arrangements are practically sustainable given
+                            the user-defined maintenance labor capacity and
+                            budget constraints, and shall flag any arrangement
+                            that exceeds these limits.
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>5. System Models</h2>
+
+                <p>
+                    The system model represents the flow of data from external
+                    datasets through processing and optimization modules,
+                    resulting in visual outputs and recommendations for urban
+                    planners.
+                </p>
+
+                <h3>Possible Models</h3>
+
+                <ul>
+                    <li>Data Flow Diagram</li>
+                    <li>Input → Processing → Output Model</li>
+                    <li>Spatial GIS-Based Optimization Model</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>6. System Evolution</h2>
+
+                <h3>6.1 Scope Evolution</h3>
+
+                <p>
+                    Future versions of the system may consider macro-scale
+                    environmental effects such as regional wind patterns and
+                    urban airflow changes caused by large-scale infrastructure
+                    arrangements.
+                </p>
+
+                <h3>6.2 Data Processing Evolution</h3>
+
+                <p>
+                    Future development may improve the separation of
+                    meteorological effects from urban infrastructure influences,
+                    including highways, skyscrapers, and artificial airflow
+                    channels.
+                </p>
+            </section>
+
+            <section>
+                <h2>7. Appendices</h2>
+
+                <h3>7.1 Appendix A: Dataset Descriptions</h3>
+
+                <h4>Microsoft Building Footprints</h4>
+
+                <ul>
+                    <li>
+                        Description: Building geometries and spatial
+                        distribution
+                    </li>
+                    <li>
+                        Usage: Identification of available land and urban
+                        density
+                    </li>
+                    <li>Type: Spatial / GIS</li>
+                    <li>
+                        Source:
+                        https://github.com/microsoft/USBuildingFootprints
+                    </li>
+                </ul>
+
+                <h3>7.2 Appendix B: Data Sources</h3>
+
+                <ul>
+                    <li>Microsoft Building Footprints Dataset</li>
+                    <li>Urban Temperature Datasets</li>
+                    <li>Satellite Imagery Sources</li>
+                </ul>
+
+                <h3>7.3 Appendix C: Assumptions</h3>
+
+                <ul>
+                    <li>
+                        Green space placement affects urban thermal
+                        distribution.
+                    </li>
+                    <li>
+                        Energy consumption correlates with ambient temperature.
+                    </li>
+                    <li>
+                        Urban thermal patterns can be approximated using
+                        available datasets.
+                    </li>
+                    <li>
+                        Constraint-based optimization can improve placement
+                        efficiency.
+                    </li>
+                </ul>
+
+                <h3>7.4 Appendix D: Formulas and Models</h3>
+
+                <p>
+                    The system estimates thermal reduction and energy savings
+                    using environmental modeling and optimization techniques.
+                </p>
+
+                <ul>
+                    <li>
+                        Input Variables: Temperature, land usage, urban density
+                    </li>
+                    <li>
+                        Output: Predicted temperature and electrical demand
+                        reduction
+                    </li>
+                    <li>
+                        Logic: Constraint-based optimization and spatial
+                        simulation
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <footer>
+            <p>Group F - Green Space Optimization Project</p>
+        </footer>
+    </body>
+</html>

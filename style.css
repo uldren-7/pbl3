@@ -1,65 +1,115 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: #f4f7f4;
-    color: #333;
+    background: #0f172a;
+    color: #e2e8f0;
 }
 
 header {
-    background: #2e7d32;
+    background: linear-gradient(90deg, #166534, #15803d);
     color: white;
-    padding: 20px;
+    padding: 24px;
     text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 nav {
-    background: #1b5e20;
-    padding: 10px;
+    background: #111827;
+    padding: 14px;
     text-align: center;
+    border-bottom: 1px solid #1f2937;
 }
 
 nav a {
-    color: white;
-    margin: 0 12px;
+    color: #d1fae5;
+    margin: 0 14px;
     text-decoration: none;
     font-weight: bold;
+    transition: 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #4ade80;
 }
 
 .container {
-    padding: 30px;
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    border-radius: 8px;
-    margin-top: 20px;
+    padding: 35px;
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #1e293b;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
+h1,
 h2 {
-    color: #2e7d32;
+    color: #86efac;
+}
+
+h3 {
+    color: #bbf7d0;
+    margin-top: 30px;
+}
+
+p {
+    line-height: 1.7;
+    color: #cbd5e1;
 }
 
 img {
     width: 100%;
-    border-radius: 6px;
-    margin: 15px 0;
+    max-width: 550px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+th {
+    background: #15803d;
+    color: white;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 16px;
+}
+
+td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #334155;
+    background: #1e293b;
+    color: #e2e8f0;
+    line-height: 1.6;
+}
+
+tr:nth-child(even) td {
+    background: #243244;
+}
+
+tr:hover td {
+    background: #334155;
+    transition: 0.2s ease;
+}
+
+th:first-child,
+td:first-child {
+    width: 140px;
+    font-weight: bold;
+    color: #86efac;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
-    background: #2e7d32;
-    color: white;
-    margin-top: 20px;
-}
-
-img {
-    width: 100%;
-    max-width: 500px;   /* limits size */
-    display: block;
-    margin: 15px auto;  /* center image */
-    border-radius: 6px;
+    padding: 16px;
+    background: #111827;
+    color: #94a3b8;
+    margin-top: 30px;
+    border-top: 1px solid #1f2937;
 }

@@ -3,11 +3,12 @@
 <head>
     <title>System Design Diagrams</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
 <header>
-    <h1>System Design Diagrams (SDD)</h1>
+    <h1>System Design Diagrams</h1>
 </header>
 
 <nav>
@@ -25,10 +26,10 @@
 
     <h2>System Design Diagrams</h2>
     <p>
-        This section presents the primary design diagrams developed for the Green Space
-        Optimization System. These diagrams illustrate the system boundary, component
-        interactions, and message flow across the two major processing phases of the project.
-    </p>
+The following diagrams provide multiple views of the Green Space Optimization System,
+including its scope, user interactions, data structures, workflows, and communication
+between system components throughout both phases of processing.
+</p>
 
     <section>
         <h3>Diagram 1 – Context Diagram</h3>
@@ -112,11 +113,104 @@
             and decision-making.
         </p>
     </section>
+    <!-- Diagram 4 -->
+<section>
+    <h3>Diagram 4 – Use Case Diagram</h3>
+
+    <img src="8.png" alt="Use Case Diagram" class="small-diagram">
+
+    <p>
+        The Use Case Diagram illustrates the interactions between the City Planner and the
+        Green Space Optimization System. It defines the system functionality from the user's
+        perspective and establishes the boundary between user-controlled actions and
+        automated system processes.
+    </p>
+
+    <p>
+        The City Planner is the sole actor and is responsible for providing the study area,
+        selecting or supplying satellite imagery, and initiating the analysis pipeline.
+        Once processing is complete, the planner can review a variety of outputs including
+        vegetation maps, vegetation change maps, opportunity maps, heat maps, optimized
+        after-scenario maps, temperature reduction estimates, and sustainability indicator
+        summaries.
+    </p>
+
+    <p>
+        The diagram also includes an optional Export Reports use case, allowing planners
+        to save or share generated outputs. This highlights the distinction between the
+        planner's direct interactions and the system's internal automated operations.
+    </p>
+</section>
+
+<!-- Diagram 5 -->
+<section>
+    <h3>Diagram 5 – Class Diagram</h3>
+
+    <img src="9.png" alt="Class Diagram" class="small-diagram">
+
+    <p>
+        The Class Diagram defines the primary data structures used throughout the Green
+        Space Optimization System. It models how information is represented, stored, and
+        transferred between the major processing stages of the application.
+    </p>
+
+    <p>
+        Input-related classes such as StudyArea and SatelliteImage represent the geographic
+        region and imagery data supplied to the system. Processing classes including
+        VegetationGrid, GridCell, VegetationChangeRecord, ThermalHotspot, and
+        CandidateConfiguration capture the information generated and manipulated during
+        analysis and optimization.
+    </p>
+
+    <p>
+        Output-oriented classes such as OptimizationResult, Report, and MapOutput
+        represent the final artefacts delivered to city planners. The relationships between
+        these classes demonstrate how data flows through the two-phase processing pipeline
+        from raw satellite imagery to optimized green-space recommendations and planning
+        reports.
+    </p>
+</section>
+
+<!-- Diagram 6 -->
+<section>
+    <h3>Diagram 6 – Activity Diagram: Full System Workflow</h3>
+
+    <img src="10.png" alt="Full System Workflow Activity Diagram">
+
+    <p>
+        This activity diagram presents the complete end-to-end workflow of the Green
+        Space Optimization System. It describes how the system processes user inputs,
+        performs environmental analysis, generates optimization solutions, and produces
+        planning outputs.
+    </p>
+
+    <p>
+        The workflow begins when the City Planner defines a study area and the system
+        acquires multi-period satellite imagery. After validating the input data, the system
+        generates vegetation grids and applies a 20×20 sliding window technique to detect
+        vegetation changes and identify significant environmental transformations.
+    </p>
+
+    <p>
+        Following the completion of Phase 1, the system enters Phase 2 where urban thermal
+        conditions are evaluated, thermal hotspots are identified, and suitability scores are
+        calculated for candidate locations. An evolutionary optimization process then
+        generates and evaluates multiple green-space configurations before selecting the
+        optimal solution.
+    </p>
+
+    <p>
+        Finally, the system generates vegetation maps, opportunity maps, heat maps,
+        optimized after-scenario maps, temperature reduction estimates, and sustainability
+        indicator summaries. These outputs are compiled into reports and delivered to the
+        City Planner to support urban planning and decision-making.
+    </p>
+</section>
 
 </div>
 
 <footer>
-    <p>Green Space Optimization System – Software Design Document</p>
+    <p>Optimizing Urban Green Spaces for Cooling – System Design Diagrams</p>
 </footer>
 
 </body>

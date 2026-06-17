@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Design Diagrams</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>System Design Diagrams (SDD)</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="problem.html">Problem</a>
+    <a href="approach.html">Approach</a>
+    <a href="data.html">Data</a>
+    <a href="results.html">Results</a>
+    <a href="about.html">About</a>
+    <a href="srd.html">SRD</a>
+    <a href="sdd.html">Design Diagrams</a>
+</nav>
+
+<div class="container">
+
+    <h2>System Design Diagrams</h2>
+    <p>
+        This section presents the primary design diagrams developed for the Green Space
+        Optimization System. These diagrams illustrate the system boundary, component
+        interactions, and message flow across the two major processing phases of the project.
+    </p>
+
+    <section>
+        <h3>Diagram 1 – Context Diagram</h3>
+
+        <img src="5.png" alt="Context Diagram">
+
+        <p>
+            The Context Diagram defines the overall system boundary and identifies the
+            external entities that interact with the Green Space Optimization System.
+            The City Planner provides the study area definition that specifies where the
+            analysis should be performed, while the Satellite Image Source supplies
+            historical multi-period satellite imagery used throughout the workflow.
+        </p>
+
+        <p>
+            At this level, the system is treated as a black box. Internal components and
+            processing logic are intentionally hidden to emphasize inputs and outputs.
+            The system produces several outputs for planners, including vegetation maps,
+            heat maps, green space opportunity maps, temperature reduction estimates,
+            and sustainability indicator summaries that support urban planning decisions.
+        </p>
+    </section>
+
+    <section>
+        <h3>Diagram 2 – Phase 1 Sequence Diagram (Data Preparation)</h3>
+
+        <img src="6.png" alt="Phase 1 Sequence Diagram">
+
+        <p>
+            This sequence diagram illustrates the interactions between the City Planner,
+            DataGenerator, DataDefinition, ModelFile, and Train components during the
+            data preparation phase. The process begins when the planner initiates data
+            collection for a selected study area and time period.
+        </p>
+
+        <p>
+            The DataGenerator retrieves satellite imagery and passes it to the
+            DataDefinition component, which defines the required variables such as
+            land surface temperature, vegetation coverage, population density,
+            available land, budget constraints, and zoning restrictions.
+            Configuration data and cooling coefficients for green space typologies are
+            stored and loaded through the ModelFile component.
+        </p>
+
+        <p>
+            The Train component performs vegetation change detection using a 20×20
+            sliding window approach. It computes vegetation change values, identifies
+            significant changes using threshold checks, and returns the generated change
+            records. Upon completion, the system notifies the City Planner that
+            Phase 1 processing has successfully finished.
+        </p>
+    </section>
+
+
+    <section>
+        <h3>Diagram 3 – Phase 2 Sequence Diagram (Optimization and Evaluation)</h3>
+
+        <img src="7.png" alt="Phase 2 Sequence Diagram">
+
+        <p>
+            This sequence diagram represents the optimization and evaluation phase of
+            the Green Space Optimization System. The Evaluator receives the outputs
+            generated during Phase 1, including change records, vegetation grids,
+            and land surface temperature data.
+        </p>
+
+        <p>
+            The Evaluator identifies thermal hotspots and calculates suitability scores
+            for candidate locations. These results are passed to the EvolutionaryGenerator,
+            which repeatedly generates candidate green space configurations, evaluates
+            their fitness, and selects the optimal arrangement through an iterative
+            optimization process.
+        </p>
+
+        <p>
+            The optimal solution is forwarded to the ReportGenerator, which creates
+            multiple outputs including the current heat map, vegetation maps,
+            vegetation change map, optimized after-scenario map, temperature reduction
+            estimates, and sustainability indicator summaries. These outputs are then
+            delivered to the City Planner to support evidence-based urban planning
+            and decision-making.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    <p>Green Space Optimization System – Software Design Document</p>
+</footer>
+
+</body>
+</html>

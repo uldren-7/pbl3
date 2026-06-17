@@ -114,5 +114,14 @@ footer {
     border-top: 1px solid #1f2937;
 }
 section {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+}
+
+section img {
+    max-width: 700px;
+    width: 100%;
+}
+
+section p {
+    text-align: justify;
 }
